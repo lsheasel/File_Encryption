@@ -1,0 +1,3 @@
+C:/Users/Schueler/Desktop/Schule/Software/12 Klasse/C/Verschlüsselung_Datei/cmake-build-debug/CMakeFiles/Verschluesselung_Datei.dir
+C:/Users/Schueler/Desktop/Schule/Software/12 Klasse/C/Verschlüsselung_Datei/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Schueler/Desktop/Schule/Software/12 Klasse/C/Verschlüsselung_Datei/cmake-build-debug/CMakeFiles/rebuild_cache.dir
