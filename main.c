@@ -4,7 +4,6 @@
 
 #define BUFFER_SIZE 4096
 
-// Funktion zur automatischen Entfernung von Anführungszeichen
 void remove_quotes(char *str) {
     size_t len = strlen(str);
     if (len > 1 && str[0] == '"' && str[len - 1] == '"') {
@@ -13,7 +12,6 @@ void remove_quotes(char *str) {
     }
 }
 
-// XOR Verschlüsselung / Entschlüsselung
 void xor_encrypt_decrypt(const char *input_filename, const char *output_filename, const char *key) {
     FILE *input = fopen(input_filename, "rb");
     FILE *output = fopen(output_filename, "wb");
@@ -30,7 +28,7 @@ void xor_encrypt_decrypt(const char *input_filename, const char *output_filename
 
     while ((bytesRead = fread(buffer, 1, BUFFER_SIZE, input)) > 0) {
         for (i = 0; i < bytesRead; i++) {
-            buffer[i] ^= key[i % key_len];  // XOR Verschlüsselung
+            buffer[i] ^= key[i % key_len];
         }
         fwrite(buffer, 1, bytesRead, output);
     }
@@ -50,7 +48,7 @@ int main() {
     printf("2) Decrypt a file\n");
     printf("Choose an option (1 or 2): ");
     scanf("%d", &choice);
-    getchar();  // Enter abfangen
+    getchar();
 
     if (choice != 1 && choice != 2) {
         printf("Invalid input!\n");
@@ -59,15 +57,14 @@ int main() {
 
     printf("Enter the full file path: ");
     fgets(input_filepath, sizeof(input_filepath), stdin);
-    input_filepath[strcspn(input_filepath, "\n")] = 0;  // Entfernt das "\n"
+    input_filepath[strcspn(input_filepath, "\n")] = 0;
 
-    remove_quotes(input_filepath);  // Entfernt automatisch Anführungszeichen
+    remove_quotes(input_filepath);
 
     printf("Enter your password/key: ");
     fgets(key, sizeof(key), stdin);
-    key[strcspn(key, "\n")] = 0;  // Entfernt das "\n"
+    key[strcspn(key, "\n")] = 0;
 
-    // Ausgabe-Dateipfad generieren
     snprintf(output_filepath, sizeof(output_filepath), "%s.%s", input_filepath, choice == 1 ? "enc" : "dec");
 
     xor_encrypt_decrypt(input_filepath, output_filepath, key);
